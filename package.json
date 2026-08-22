@@ -1,0 +1,33 @@
+{
+  "name": "dsh-buddy",
+  "version": "0.2.0",
+  "description": "dsh-buddy — 用户画像自适应表达技能：实时构建用户熟练度/偏好/领域画像，动态匹配回答深度与术语密度",
+  "type": "module",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "skills",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "skill",
+    "adaptive-communication",
+    "user-portrait"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
