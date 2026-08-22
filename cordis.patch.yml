@@ -1,0 +1,4 @@
+# dsh-buddy bundle 层：注册用户画像自适应表达技能。
+- insert:
+    - id: dsh-buddy
+      name: dsh-buddy
