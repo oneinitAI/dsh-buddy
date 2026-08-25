@@ -1,6 +1,6 @@
 {
   "name": "dsh-buddy",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "dsh-buddy — 用户画像自适应表达技能：实时构建用户熟练度/偏好/领域画像，动态匹配回答深度与术语密度",
   "type": "module",
   "license": "MIT",

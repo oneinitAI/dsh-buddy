@@ -52,8 +52,9 @@ test('渐进式披露：patterns.md 存在且被主文件引用，导出条款�
   for (const section of ['降档手法', '升档手法', '装唐检测完整规程']) {
     assert.ok(patterns.includes(section), `patterns.md 应包含「${section}」`)
   }
-  // 用户可控性：画像可查可纠不落盘
+  // 用户可控性：画像可查可纠不落盘；持久化必须显式 opt-in
   assert.ok(raw.includes('导出') && raw.includes('不主动持久化'), '画像摘要导出条款应在位')
+  assert.ok(raw.includes('buddy-profile.yaml') && raw.includes('沉默 ≠ 同意'), '持久化 opt-in 条款应在位（默认关闭）')
 })
 
 test('src/index.js 注册逻辑与 SKILL.md name 一致且带 resourceBase', async () => {
