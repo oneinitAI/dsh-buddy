@@ -37,10 +37,12 @@ test('frontmatter：name 合法、description 符合正统规范、版本号在�
 test('画像核心条款：主文件保留决策必需关键词', async () => {
   const raw = await readFile(join(SKILL_DIR, 'SKILL.md'), 'utf8')
   const { body } = splitFrontmatter(raw)
-  for (const keyword of ['画像', '分域', '每轮', '实时', '高估', '装唐', '以行为为准', 'who is JSON']) {
+  for (const keyword of ['画像', '分域', '每轮', '实时', '高估', '言行冲突', '以行为为准', 'who is JSON']) {
     assert.ok(body.includes(keyword), `主文件应包含「${keyword}」`)
   }
   assert.ok(!body.includes('| 术语 |'), '不得出现预设术语对照表（无预设话术是核心设计）')
+  // 去梗红线：主文件不再使用文化梗词，检测话术已中性化
+  assert.ok(!body.includes('你是在装唐'), '点破话术应改为中性表述（patterns.md 参数化）')
 })
 
 test('渐进式披露：patterns.md 存在且被主文件引用，导出条款在位', async () => {
@@ -52,9 +54,9 @@ test('渐进式披露：patterns.md 存在且被主文件引用，导出条款�
   for (const section of ['降档手法', '升档手法', '装唐检测完整规程']) {
     assert.ok(patterns.includes(section), `patterns.md 应包含「${section}」`)
   }
-  // 用户可控性：画像可查可纠不落盘；持久化必须显式 opt-in
+  // 用户可控性：画像可查可纠不落盘；持久化必须显式 opt-in 且走工具（沉默不是同意）
   assert.ok(raw.includes('导出') && raw.includes('不主动持久化'), '画像摘要导出条款应在位')
-  assert.ok(raw.includes('buddy-profile.yaml') && raw.includes('沉默 ≠ 同意'), '持久化 opt-in 条款应在位（默认关闭）')
+  assert.ok(raw.includes('buddy_profile_set') && raw.includes('沉默 ≠ 同意'), '持久化 opt-in 条款应在位（默认关闭、工具化）')
 })
 
 test('src/index.js 注册逻辑与 SKILL.md name 一致且带 resourceBase', async () => {
